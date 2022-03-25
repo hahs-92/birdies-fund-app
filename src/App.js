@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './App.css';
-
+//components
+import { Header } from './components/Header'
 
 function App() {
 
@@ -47,7 +48,7 @@ function App() {
 
   return (
     <div className="App">
-      <header>Birdie Fund Randomizer</header>
+      <Header />
 
       <main>
         <form onSubmit={handleSubmit}>
