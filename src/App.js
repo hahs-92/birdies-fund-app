@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import './App.css';
+//helpers
+import { fetchData } from './helpers/fetchData'
 //components
 import { Header } from './components/Header'
 import { Form } from './components/Form'
@@ -12,18 +14,7 @@ function App() {
   const [birdie, setBirdie] = useState()
 
   const fetchBirdie = async() => {
-
-    const response =await fetch("http://192.168.0.105:8081/api/v1/birdies", {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        "number": numberHoles,
-        "limit": limit
-      })
-    })
-    const data = await response.json()
+    const data = await fetchData()
     setBirdie(data)
   }
 
