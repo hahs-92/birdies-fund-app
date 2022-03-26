@@ -2,11 +2,12 @@
 import style from '../styles/components/Form.module.css'
 
 export const Form = ({
-    numberHoles,handleNumber, handleSelect, cb, loading
+    numberHoles,handleNumber, handleSelect, cb, loading, warning
 }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
+
         cb()
       }
 
@@ -34,6 +35,12 @@ export const Form = ({
             </select>
 
             <span>courses.</span>
+
+            <section className={style.Form_Warning}>
+                {
+                    warning && <h4>{warning}</h4>
+                }
+            </section>
 
            <section className={ style.Form_ButtonWrapper }>
                 <input

@@ -2,7 +2,7 @@
 import style from '../styles/components/Result.module.css'
 
 export const Result = ({ birdie, isError }) => {
-  console.log(birdie)
+  console.log(isError)
   return (
     <section className={ style.Result }>
         {

@@ -14,17 +14,31 @@ function App() {
   const [birdie, setBirdie] = useState()
   const [loading, setLoading] = useState(false)
   const [isError, setIsError] = useState(null)
+  const [warning, setWarning] = useState(null)
 
   const fetchBirdie = async() => {
+    const offset = limit.split("-")[1]
+    if(numberHoles >= parseInt(offset)) {
+      setWarning(`El numero a generar no puede ser mayor a ${limit.split("-")[1] -1}`)
+      return false
+    }
+
+    if(numberHoles < 1) {
+      setWarning("El numero a generar no puede ser menor de 0")
+      return false
+    }
+
     try {
       setLoading(true)
       const data = await fetchData(numberHoles, limit)
       setBirdie(data)
       setLoading(false)
       setIsError(null)
+      setWarning(null)
     } catch (error) {
-      setIsError(error.message)
+      setIsError(true)
       setLoading(false)
+      setWarning(null)
     }
   }
 
@@ -39,7 +53,6 @@ function App() {
   return (
     <div className="App">
       <Header />
-
       <main>
         <Form
           numberHoles={numberHoles}
@@ -47,15 +60,15 @@ function App() {
           handleSelect={handleSelect}
           cb={ fetchBirdie }
           loading={loading}
+          warning={warning}
         />
-
+        { isError && <h3>Something went wrong, Try again later!</h3>}
         {
-          birdie &&
-          <Result
-            birdie={birdie}
-            isError={ isError}
-          />
-
+          birdie
+          &&
+            <Result
+              birdie={birdie}
+            />
         }
       </main>
     </div>

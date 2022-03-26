@@ -14,6 +14,14 @@
     background: none;
 }
 
+.Form_Warning {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    color: tomato;
+}
+
 .Form_ButtonWrapper {
     margin-top: 2rem;
     display: flex;
