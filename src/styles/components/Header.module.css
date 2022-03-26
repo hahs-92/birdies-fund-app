@@ -1,0 +1,16 @@
+.Header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 9rem;
+    border-bottom: 1px solid tomato;
+}
+
+
+@media (min-width: 700px) {
+    .Header {
+        padding: 0 10%;
+        justify-content: flex-start;
+    }
+}

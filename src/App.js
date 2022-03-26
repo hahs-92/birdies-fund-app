@@ -14,7 +14,7 @@ function App() {
   const [birdie, setBirdie] = useState()
 
   const fetchBirdie = async() => {
-    const data = await fetchData()
+    const data = await fetchData(numberHoles, limit)
     setBirdie(data)
   }
 

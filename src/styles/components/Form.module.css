@@ -1,0 +1,40 @@
+.Form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem 0;
+    width: 100%;
+    font-size: 2.2rem;
+}
+
+.Form_Input {
+    margin: 0 .5rem;
+    padding: 0 .5rem;
+    border: 1px solid salmon;
+    background: none;
+}
+
+.Form_ButtonWrapper {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.Form_ButtonWrapper input {
+    width: 20rem;
+    height: 3.5rem;
+    font-size: 1.6rem;
+    border: none;
+    background-color: tomato;
+    border-radius: 5rem;
+    color: white;
+    cursor: pointer;
+}
+
+@media (min-width: 1023px) {
+    .Form {
+        font-size: 2.4rem;
+    }
+
+}
