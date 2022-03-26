@@ -3,6 +3,7 @@ import './App.css';
 //components
 import { Header } from './components/Header'
 import { Form } from './components/Form'
+import { Result } from './components/Result'
 
 function App() {
 
@@ -22,11 +23,9 @@ function App() {
         "limit": limit
       })
     })
-
     const data = await response.json()
     setBirdie(data)
   }
-
 
   const handleNumber = (e) => {
     const offset = limit.split("-")[1]
@@ -34,15 +33,12 @@ function App() {
     if(e.target.value > offset) {
       return false
     }
-
     setNumberHoles(e.target.value)
   }
 
   const handleSelect = (e) => {
     setLimit(e.target.value)
   }
-
-
 
   return (
     <div className="App">
@@ -58,15 +54,14 @@ function App() {
 
         {
           birdie &&
-          <section>
-            <h2>{`You requested ${birdie.number} birdie hole for a ${birdie.limit} hole course. Here it is:`}</h2>
-            <p>{ birdie.holes.join(', ')}</p>
-            <p>{ birdie.date }</p>
-          </section>
+          <Result
+            birdie={birdie}
+          />
+
         }
       </main>
     </div>
-  );
+  )
 }
 
 export default App;
