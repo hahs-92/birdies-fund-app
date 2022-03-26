@@ -2,6 +2,7 @@ import { useState } from 'react';
 import './App.css';
 //components
 import { Header } from './components/Header'
+import { Form } from './components/Form'
 
 function App() {
 
@@ -41,36 +42,19 @@ function App() {
     setLimit(e.target.value)
   }
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    fetchBirdie()
-  }
+
 
   return (
     <div className="App">
       <Header />
 
       <main>
-        <form onSubmit={handleSubmit}>
-          <label htmlFor="number">Generate</label>
-          <input
-            type="number"
-            id='number'
-            value={ numberHoles}
-            onChange={handleNumber}
-          />
-
-          <label htmlFor="holes">Birdies hole(s) for a</label>
-          <select name="holes" id="holes" onChange={handleSelect}>
-            <option value="1-9">1-9</option>
-            <option value="10-18">10-18</option>
-            <option value="1-18">1-18</option>
-          </select>
-
-          <span>courses</span>
-
-          <input type="submit" value="Get Birdie Holes" />
-        </form>
+        <Form
+          numberHoles={numberHoles}
+          handleNumber={handleNumber}
+          handleSelect={handleSelect}
+          cb={ fetchBirdie }
+        />
 
         {
           birdie &&
