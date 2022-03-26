@@ -12,18 +12,23 @@ function App() {
   const [numberHoles, setNumberHoles] = useState(1)
   const [limit, setLimit] = useState("1-9")
   const [birdie, setBirdie] = useState()
+  const [loading, setLoading] = useState(false)
+  const [isError, setIsError] = useState(null)
 
   const fetchBirdie = async() => {
-    const data = await fetchData(numberHoles, limit)
-    setBirdie(data)
+    try {
+      setLoading(true)
+      const data = await fetchData(numberHoles, limit)
+      setBirdie(data)
+      setLoading(false)
+      setIsError(null)
+    } catch (error) {
+      setIsError(error.message)
+      setLoading(false)
+    }
   }
 
   const handleNumber = (e) => {
-    const offset = limit.split("-")[1]
-
-    if(e.target.value > offset) {
-      return false
-    }
     setNumberHoles(e.target.value)
   }
 
@@ -41,12 +46,14 @@ function App() {
           handleNumber={handleNumber}
           handleSelect={handleSelect}
           cb={ fetchBirdie }
+          loading={loading}
         />
 
         {
           birdie &&
           <Result
             birdie={birdie}
+            isError={ isError}
           />
 
         }

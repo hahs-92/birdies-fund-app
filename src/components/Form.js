@@ -1,7 +1,9 @@
 //styles
 import style from '../styles/components/Form.module.css'
 
-export const Form = ({numberHoles,handleNumber, handleSelect, cb}) => {
+export const Form = ({
+    numberHoles,handleNumber, handleSelect, cb, loading
+}) => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -34,7 +36,11 @@ export const Form = ({numberHoles,handleNumber, handleSelect, cb}) => {
             <span>courses.</span>
 
            <section className={ style.Form_ButtonWrapper }>
-                <input type="submit" value="Get Birdie Holes" />
+                <input
+                    type="submit"
+                    value={ loading ? "Loading..." : "Get Birdie Holes"}
+                    disabled={!!loading}
+                />
            </section>
         </form>
     )
